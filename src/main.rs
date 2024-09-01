@@ -1,13 +1,18 @@
 use rust_scheduling::model::agenda::Agenda;
-use chrono::naive::NaiveDate;
+use rust_scheduling::view::console_view::ConsoleView;
 
 fn main() {
-    let year = 24;
-    let month = 8;
-    let day = 24;
+    let mut agenda = Agenda::new();
+    let view = ConsoleView::new();
 
-    let date = NaiveDate::from_ymd_opt(year, month, day)
-        .expect("Radiohaed man of war");
+    agenda.add_contact("davi", "zap", "85minhapica");
+    agenda.add_contact("lucas", "winle", "85kk");
     
-    
+    agenda.get_contact_by_name("davi").assign_to_group("viados");
+    agenda.get_contact_by_name("lucas").assign_to_group("viados");
+
+    agenda.publisher.subscribe(Box::new(view));
+    agenda.publisher.notify(&agenda.to_string());
+
+    println!("ended testing.");
 }

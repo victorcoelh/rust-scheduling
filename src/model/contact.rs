@@ -26,6 +26,6 @@ impl Contact {
 
 impl ToString for Contact {
     fn to_string(&self) -> String {
-        format!("{} {}: {}", self.first_name, self.last_name, self.number)
+        format!("{} {} - {}\n", self.first_name, self.last_name, self.number)
     }
 }

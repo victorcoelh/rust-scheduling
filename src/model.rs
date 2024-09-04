@@ -1,2 +1,2 @@
 pub mod agenda;
-mod contact;
+pub mod contact;

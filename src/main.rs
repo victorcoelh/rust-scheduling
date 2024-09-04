@@ -22,13 +22,13 @@ fn main() {
 }
 
 fn handle_console_command(input: &str, controller: &mut AgendaController) {
-    println!("pica{}pica", input.split(" ").last().unwrap());
     let mut words = input.split(" ");
     let command = words.next();
 
     match command.expect("Missing command.") {
         "add" => controller.save_contact_from_string_vec(words.collect()),
         "group" => controller.group_contact_from_string_vec(words.collect()),
+        "remove" => controller.remove_contact_from_string_vec(words.collect()),
         "quit" => exit(0),
         _ => panic!("Invalid command.")
     }

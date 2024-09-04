@@ -3,7 +3,6 @@ use std::collections::HashMap;
 use crate::model::contact::Contact;
 use crate::observer::Publisher;
 
-
 pub struct Agenda {
     contacts: Vec<Contact>,
     pub publisher: Publisher,
@@ -22,11 +21,11 @@ impl Agenda {
         self.contacts.push(contact)
     }
 
-    pub fn remove_contact(self: &mut Self, number: &str) {
+    pub fn remove_contact(self: &mut Self, first_name: &str) {
         let removed_position = self.contacts
             .iter()
-            .position(|val| val.number == number)
-            .expect("No contact found with number {number}.");
+            .position(|val| val.first_name == first_name)
+            .expect("No contact found with name {first_name}.");
 
         self.contacts.swap_remove(removed_position);
     }

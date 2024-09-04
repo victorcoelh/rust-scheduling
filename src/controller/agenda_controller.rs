@@ -27,4 +27,11 @@ impl AgendaController {
         self.agenda.get_contact_by_name(first_name).assign_to_group(group);
         self.agenda.publisher.notify(&self.agenda.to_string());
     }
+
+    pub fn remove_contact_from_string_vec(self: &mut Self, input: Vec<&str>) {
+        let first_name = input.get(0).expect("Missing first name.");
+        
+        self.agenda.remove_contact(&first_name);
+        self.agenda.publisher.notify(&self.agenda.to_string());
+    }
 }
